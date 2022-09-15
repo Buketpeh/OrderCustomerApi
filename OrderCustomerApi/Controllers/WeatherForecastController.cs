@@ -1,4 +1,6 @@
+using BasketApplication.Data.Context;
 using Microsoft.AspNetCore.Mvc;
+using OrderCustomerApi.Data.Entities;
 
 namespace OrderCustomerApi.Controllers
 {
@@ -21,6 +23,16 @@ namespace OrderCustomerApi.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+            var db = new DataContext();
+        
+            db.Add(new Customer
+            {
+                Guid = Guid.NewGuid(),
+                FirstName = "buket",
+                LastName = "pehlivan"
+
+            });
+            db.SaveChanges();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
