@@ -1,12 +1,28 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OrderCustomerApi.Service.Interfaces;
+using OrderCustomerApi.Service.Model;
+using OrderCustomerApi.Shared.Model.BindingModel;
 
 namespace OrderCustomerApi.Controllers
 {
-    public class OrderController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class OrderController : ControllerBase
     {
-        public IActionResult Index()
+        private readonly IOrderService _orderService;
+        public OrderController(IOrderService orderService)
         {
-            return View();
+            _orderService = orderService;   
         }
+
+        [HttpPost]
+        public ServiceResult Create(AddOrderBindingModel model) => _orderService.Create(model);
+
+        [HttpPut]
+        public ServiceResult Update(UpdateOrderBindingModel model) =>  _orderService.Update(model);
+
+        [HttpDelete,Route("{guid}")]
+        public ServiceResult Update(Guid guid) => _orderService.Delete(guid);
+
     }
 }

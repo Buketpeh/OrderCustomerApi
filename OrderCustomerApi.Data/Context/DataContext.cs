@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BasketApplication.Data.Context
+namespace OrderCustomerApi.Data.Context
 {
     public class DataContext : DbContext
     {
@@ -19,6 +19,8 @@ namespace BasketApplication.Data.Context
         public DbSet<District> Districts { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<OrderProduct> OrderProducts { get; set; }
+        public DbSet<Log> Logs { get; set; }
 
         private const string connectionString = @"server=BUKET-PEHLIVAN; database=OrderDB; TrustServerCertificate=True; Integrated Security=true ";
 
@@ -36,7 +38,10 @@ namespace BasketApplication.Data.Context
             modelBuilder.Entity<District>().HasKey(x => x.Guid);
             modelBuilder.Entity<Order>().HasKey(x => x.Guid);
             modelBuilder.Entity<Product>().HasKey(x => x.Guid);
+            modelBuilder.Entity<Log>().HasKey(x => x.Guid);
+            modelBuilder.Entity<OrderProduct>().HasKey(x => x.Guid);
             modelBuilder.Entity<Product>().Property(x => x.Price).HasColumnType("decimal(18,4)");
+
 
         }
     }

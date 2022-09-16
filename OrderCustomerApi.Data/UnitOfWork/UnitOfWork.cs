@@ -1,4 +1,4 @@
-﻿using BasketApplication.Data.Context;
+﻿using OrderCustomerApi.Data.Context;
 using OrderApi.Data.Repositories;
 using OrderCustomerApi.Data.UnitOfWork.Interfaces;
 using System;
@@ -11,7 +11,7 @@ namespace OrderCustomerApi.Data.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DataContext _context;
+        public readonly DataContext _context;
         public UnitOfWork(DataContext context)
         {
             _context = context;
@@ -44,6 +44,7 @@ namespace OrderCustomerApi.Data.UnitOfWork
             }
             this.disposed = true;
         }
+       
 
 
 

@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OrderCustomerApi.Data\OrderCustomerApi.Data.csproj" />
+    <ProjectReference Include="..\OrderCustomerApi.Service\OrderCustomerApi.Service.csproj" />
+    <ProjectReference Include="..\OrderCustomerApi.Shared.Model\OrderCustomerApi.Shared.Model.csproj" />
   </ItemGroup>
 
 </Project>

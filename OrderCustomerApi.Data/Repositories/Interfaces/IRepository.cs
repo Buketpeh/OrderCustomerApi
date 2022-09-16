@@ -17,5 +17,10 @@ namespace OrderApi.Data.Repositories
         void Update(T entity);
         void Delete(T entity);
         void Delete(Guid guid);
+        void AddRange(IEnumerable<T> entities);
+        void GetDatabaseValues(T entity);
+        void RemoveRange(IEnumerable<T> entities);
+      
+        
     }
 }
